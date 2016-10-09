@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+    defaultConfig {
+        applicationId "com.jashlabs.bunkin"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+}
+
+dependencies {
+
+    testCompile 'junit:junit:4.12'
+    compile('io.socket:socket.io-client:0.6.3') {
+        // excluding org.json which is provided by Android
+        exclude group: 'org.json', module: 'json'
+    }
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:support-compat:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.pubnub:pubnub-android:3.7.6'
+    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.google.code.gson:gson:2.3.1'
+
+    compile 'com.mcxiaoke.volley:library:1.0.19'
+    compile 'com.etsy.android.grid:library:1.0.5'
+    compile 'com.firebase:firebase-client-android:2.5.2'
+    compile('com.github.afollestad:sectioned-recyclerview:0.2.0') {
+        transitive = true
+    }
+}
